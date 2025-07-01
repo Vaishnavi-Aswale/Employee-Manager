@@ -55,7 +55,8 @@ The client will start on `http://localhost:3000` by default.
 
 ## Sample .env file for Server
 ```env
-MONGO_URI=mongodb://localhost:27017/empmanager
+MONGO_URI="mongodb+srv://username:password@clustername.dbgxuow.mongodb.net/employeeDB?retryWrites=true&w=majority&appName=clustername"
+
 PORT=5000
 ```
 
