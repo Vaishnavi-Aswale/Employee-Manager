@@ -9,7 +9,6 @@ export const EmployeeProvider = ({ children }) => {
   const [employees, setEmployees] = useState([]);
 
   const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:5000';
-  console.log(BACKEND_URL);
   const fetchEmployees = async () => {
     const res = await axios.get(`${BACKEND_URL}/employees`);
     setEmployees(res.data);

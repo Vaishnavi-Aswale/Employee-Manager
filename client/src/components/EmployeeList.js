@@ -100,11 +100,11 @@ const EmployeeList = () => {
             <div className="card h-100">
               {emp.photo && <img src={`${BACKEND_URL}/uploads/${emp.photo}`} className="card-img-top" style={{height: '300px', objectFit: 'contain'}} alt="photo" />}
               <div className="card-body d-flex flex-column">
-                <h5 className="card-title">{emp.name}</h5>
-                <p className="card-text">{emp.email}</p>
+                <h5 className="card-title text-center fw-bold">{emp.name}</h5>
+                <p className="card-text">{emp.email && `Email: ${emp.email}`}</p>
                 <p className="card-text">{emp.age && `Age: ${emp.age}`}</p>
-                <p className="card-text">{emp.dob && emp.dob}</p>
-                <p className="card-text">{emp.address}</p>
+                <p className="card-text">{emp.dob && `DOB: ${emp.dob}`}</p>
+                <p className="card-text">{emp.address && `Address: ${emp.address}`}</p>
                 <div className="mt-auto">
                                   <button className="btn btn-sm btn-warning me-2" onClick={() => {
                   setEditing(emp);

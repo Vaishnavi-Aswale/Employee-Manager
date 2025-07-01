@@ -73,9 +73,32 @@ exports.updateEmployee = async (req, res) => {
       }
     }
 
+    // Prepare update object, handling empty values properly
+    const updateData = { name, email };
+    
+    // Handle age - allow empty string to clear the field
+    if (age !== undefined) {
+      updateData.age = age === '' ? null : age;
+    }
+    
+    // Handle address - allow empty string to clear the field
+    if (address !== undefined) {
+      updateData.address = address === '' ? null : address;
+    }
+    
+    // Handle DOB
+    if (processedDob !== undefined) {
+      updateData.dob = processedDob === '' ? null : processedDob;
+    }
+    
+    // Handle photo
+    if (photo !== undefined) {
+      updateData.photo = photo === '' ? null : photo;
+    }
+
     const updated = await Employee.findByIdAndUpdate(
       req.params.id,
-      { name, email, age, dob: processedDob, address, photo },
+      updateData,
       { new: true }
     );
     res.json(updated);

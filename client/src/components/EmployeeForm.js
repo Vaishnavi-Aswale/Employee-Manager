@@ -13,6 +13,19 @@ const EmployeeForm = ({ existing, onClose, isNewEmployee }) => {
   });
   const [errors, setErrors] = useState({});
 
+  // Reset form function
+  const resetForm = () => {
+    setForm({
+      name: '',
+      age: '',
+      email: '',
+      dob: '',
+      address: '',
+      photo: null,
+    });
+    setErrors({});
+  };
+
   useEffect(() => {
     if (existing) {
       const formattedExisting = { ...existing };
@@ -27,19 +40,19 @@ const EmployeeForm = ({ existing, onClose, isNewEmployee }) => {
           formattedExisting.dob = `${yyyy}-${mm}-${dd}`;
         }
       }
-      setForm(formattedExisting);
-      setErrors({});
-    } else if (isNewEmployee) {
-      // Reset form for new employee
+      // Ensure all fields are properly set, including empty ones
       setForm({
-        name: '',
-        age: '',
-        email: '',
-        dob: '',
-        address: '',
-        photo: null,
+        name: formattedExisting.name || '',
+        age: formattedExisting.age || '',
+        email: formattedExisting.email || '',
+        dob: formattedExisting.dob || '',
+        address: formattedExisting.address || '',
+        photo: null, // Always reset photo to null for editing
       });
       setErrors({});
+    } else {
+      // Reset form for new employee or when no existing data
+      resetForm();
     }
   }, [existing, isNewEmployee]);
 
@@ -51,8 +64,6 @@ const EmployeeForm = ({ existing, onClose, isNewEmployee }) => {
       setForm({ ...form, [name]: value });
     }
   };
-
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -84,8 +95,19 @@ const EmployeeForm = ({ existing, onClose, isNewEmployee }) => {
 
     const formData = new FormData();
     Object.entries(form).forEach(([key, value]) => {
-      if (key === 'dob' && value) {
+      if (key === 'photo') {
+        // Only append photo if it's a file
+        if (value instanceof File) {
+          formData.append(key, value);
+        }
+      } else if (key === 'dob' && value) {
         formData.append('dob', value);
+      } else if (key === 'age') {
+        // Always send age, even if empty, to allow clearing
+        formData.append('age', value || '');
+      } else if (key === 'address') {
+        // Always send address, even if empty, to allow clearing
+        formData.append('address', value || '');
       } else if (value) {
         formData.append(key, value);
       }
