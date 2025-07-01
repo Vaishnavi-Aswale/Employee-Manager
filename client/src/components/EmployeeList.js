@@ -26,7 +26,7 @@ const EmployeeList = () => {
 
       {/* Modal */}
       <div className={`modal fade ${showForm ? 'show' : ''}`} style={{display: showForm ? 'block' : 'none'}} tabIndex="-1">
-        <div className="modal-dialog modal-lg">
+        <div className="modal-dialog modal-md">
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title">{editing ? 'Edit Employee' : 'Add Employee'}</h5>
@@ -94,27 +94,27 @@ const EmployeeList = () => {
         setEmployeeToDelete(null);
       }}></div>}
 
-      <div className="row row-cols-1 row-cols-md-3 g-4">
+      <div className="row row-cols-1 row-cols-md-4 g-3">
         {employees.map(emp => (
           <div key={emp._id} className="col">
-            <div className="card h-100">
-              {emp.photo && <img src={`${BACKEND_URL}/uploads/${emp.photo}`} className="card-img-top" style={{height: '300px', objectFit: 'contain'}} alt="photo" />}
-              <div className="card-body d-flex flex-column">
-                <h5 className="card-title text-center fw-bold">{emp.name}</h5>
-                <p className="card-text">{emp.email && `Email: ${emp.email}`}</p>
-                <p className="card-text">{emp.age && `Age: ${emp.age}`}</p>
-                <p className="card-text">{emp.dob && `DOB: ${emp.dob}`}</p>
-                <p className="card-text">{emp.address && `Address: ${emp.address}`}</p>
+            <div className="card h-100" style={{maxWidth: '280px'}}>
+              {emp.photo && <img src={`${BACKEND_URL}/uploads/${emp.photo}`} className="card-img-top" style={{height: '200px', objectFit: 'contain'}} alt="photo" />}
+              <div className="card-body d-flex flex-column p-3">
+                <h6 className="card-title text-center fw-bold mb-2">{emp.name}</h6>
+                <p className="card-text small mb-1">{emp.email && `Email: ${emp.email}`}</p>
+                <p className="card-text small mb-1">{emp.age && `Age: ${emp.age}`}</p>
+                <p className="card-text small mb-1">{emp.dob && `DOB: ${emp.dob}`}</p>
+                <p className="card-text small mb-2">{emp.address && `Address: ${emp.address}`}</p>
                 <div className="mt-auto">
-                                  <button className="btn btn-sm btn-warning me-2" onClick={() => {
-                  setEditing(emp);
-                  setIsNewEmployee(false);
-                  setShowForm(true);
-                }}>Edit</button>
+                  <button className="btn btn-sm btn-warning me-2" onClick={() => {
+                    setEditing(emp);
+                    setIsNewEmployee(false);
+                    setShowForm(true);
+                  }}>Edit</button>
                   <button className="btn btn-sm btn-danger" onClick={() => {
-                  setEmployeeToDelete(emp);
-                  setShowDeleteConfirm(true);
-                }}>Delete</button>
+                    setEmployeeToDelete(emp);
+                    setShowDeleteConfirm(true);
+                  }}>Delete</button>
                 </div>
               </div>
             </div>

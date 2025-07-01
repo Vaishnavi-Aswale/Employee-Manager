@@ -192,7 +192,33 @@ const EmployeeForm = ({ existing, onClose, isNewEmployee }) => {
         
         <div className="mb-4">
           <label className="form-label">Photo</label>
-          <input type="file" name="photo" className="form-control" onChange={handleChange} accept="image/*" />
+          <div className="input-group">
+            <input 
+              type="file" 
+              name="photo" 
+              className="form-control" 
+              onChange={handleChange} 
+              accept="image/*"
+              key={existing ? `edit-${existing._id}` : 'new-employee'}
+              style={{display: 'none'}}
+              id="photo-input"
+            />
+            <input 
+              type="text" 
+              className="form-control" 
+              placeholder="Choose file..." 
+              value={existing && existing.photo ? existing.photo.split('-').slice(1).join('-') : ''}
+              readOnly
+              onClick={() => document.getElementById('photo-input').click()}
+            />
+            <button 
+              className="btn btn-outline-secondary" 
+              type="button"
+              onClick={() => document.getElementById('photo-input').click()}
+            >
+              Browse
+            </button>
+          </div>
         </div>
         
         <div className="d-flex justify-content-end gap-2">
