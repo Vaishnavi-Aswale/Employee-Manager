@@ -13,7 +13,7 @@
 
 ### 1. Clone the Repository
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/Vaishnavi-Aswale/Employee-Manager.git
 cd employee-manager
 ```
 
@@ -24,8 +24,6 @@ Create a `.env` file inside the `server` directory with the following content:
 MONGO_URI=your MongoDB Atlas connection string
 PORT=5000
 ```
-
-- Replace the `MONGO_URI` value with your actual MongoDB URI if using MongoDB Atlas.
 
 ---
 
@@ -49,8 +47,7 @@ The client will start on `http://localhost:3000` by default.
 
 ---
 
-## Additional Notes
-- The client expects the server URL to be set in the `REACT_APP_BACKEND_URL` environment variable (see below).
+- The client expects the server URL to be set in the `REACT_APP_BACKEND_URL` environment variable.
 - Uploaded files are stored in the `server/uploads` directory.
 - Make sure MongoDB is running before starting the server.
 
