@@ -9,11 +9,11 @@
 
 ---
 
-## Quick Start (Recommended)
+## Quick Start
 
 ### 1. Clone the Repository
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/Vaishnavi-Aswale/Employee-Manager.git
 cd employee-manager
 ```
 
@@ -90,7 +90,8 @@ npm start
 
 ## Sample .env file for Server
 ```env
-MONGO_URI=mongodb://localhost:27017/empmanager
+In the Mongo URI add- username, password(if password contain '@' then replace with %40), database name
+MONGO_URI="mongodb+srv://username:password@vacluster.dbgxuow.mongodb.net/DATABASENAME?retryWrites=true&w=majority&appName=VACluster"
 PORT=5001
 ```
 
