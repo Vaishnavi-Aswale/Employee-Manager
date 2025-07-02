@@ -86,4 +86,13 @@ PORT=5001
 REACT_APP_BACKEND_URL=http://localhost:5001
 ```
 
+## Screenshots
+
+Employee List
+![EmployeeList](./EmployeeList.png)
+
+Add New Employee
+
+<img src="./Add_Employee.png" alt="Add Employee" width="400"/>
+
 
