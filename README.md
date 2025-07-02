@@ -46,22 +46,8 @@ This will start:
 
 ---
 
-## Available Scripts
 
-From the root directory, you can run:
-
-| Command | Description |
-|---------|-------------|
-| `npm run install-all` | Install dependencies for root, server, and client |
-| `npm run dev` | Start both server and client in development mode |
-| `npm run server` | Start only the server |
-| `npm run client` | Start only the client |
-| `npm run build` | Build the client for production |
-| `npm start` | Start only the server in production mode |
-
----
-
-## Manual Setup (Alternative)
+## (Alternative)
 
 If you prefer to run server and client separately:
 
